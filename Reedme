@@ -1,0 +1,35 @@
+To test Q1 and Q2 in js code:
+ex:
+const charLimit = 10;
+const sentence = "I am so fucking bored here.";
+console.log(rearrangeSentenceNonRecursive(charLimit, sentence));
+
+
+To run randomNumberApi:
+-run node randomNumberApi.js
+-open a terminal
+-run the following command `curl "http://localhost:5000/random?min=1&max=100"`
+
+To access /spain endpoint and set a random number to one of the players.
+`curl "http://localhost:5000/spin?player=Player%20A"` or
+`curl "http://localhost:5000/spin?player=Player%20B"`
+
+Sol N5:
+I can use database to make sure data is consistent under several calls to my endpoint.
+
+
+Data base questions:
+----------------------
+Q1: I don't have speciific critisism to this structure. however in my opinion balance collection is reduntant, information in this collection can be esily retreived from players collection.
+
+Q2: answered in code in dataBase.js. I used mongo cuz i know more about it.
+
+Q3:
+we can add indexing to the feild "games_id" useing createIndex() method. like this Mongo will store the values of "games_is" in a collection along with a refernce to it's location in the original collection. and so when we query using games_id Mongo will use the index to quickly locate the data and retrieve the results.
+Apart from finding solution through the Database we can also implement a caching mechanisim idk with Redis for ex to avoid serving subsequent requests for the same data. so we store the top 3 games along with their number of bets.
+
+Q4:
+- when we have a large database we want to make sure we can control it's size. Meaning we look at scaliblity compatablity while our database is growing.
+- Performance is also a very important aspect. for ex, we don't want to write quieres that involves a lot of mathematical requierments or difficult computations especially when we know that these information or this query is requested frequently. this will exhaust CPU and slow down performance.
+- of course dataBase security is a very important point as well cuz with growin database there will be a lot of cracks for people who doesn't want us to be happy :D however i'm not very expert in this regard of database security I can read and learn more about it tho.
+- I guess cost managment goes hand in hand with good design and scaliblity. Meaning that if we have a good design and plan for scaliblity from the beginning, we will be cost effictive while database is growing.
